@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "Installing applications"
+
+sudo yum update -y
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+echo "Installation Done"
+
+echo "Proceeding with configuration"
+sleep 10
+
+echo  "!!! Welcome to demo website !!!" > /var/www/html/index.html
+

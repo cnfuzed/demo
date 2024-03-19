@@ -1,0 +1,9 @@
+#  Create S3 bucket for backend where we want to store our public files
+
+resource "aws_s3_bucket" "public_file_buc" {
+bucket = "buc_name"
+
+  tags = {
+    Name = "PublicFiles"
+  }
+}

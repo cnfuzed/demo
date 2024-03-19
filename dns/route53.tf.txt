@@ -1,0 +1,7 @@
+resource "aws_route53_record" "demo_record" {
+  zone_id = module.route53.zone_id
+  name    = var.web_name
+  type    = "CNAME"
+  ttl     = "300"
+  records = [aws_lb.demo_elb.dns_name]
+}

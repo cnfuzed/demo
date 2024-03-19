@@ -1,0 +1,35 @@
+variable "ami_id" {
+  description = "Image requierd to create EC2"
+  required = true
+  default = "123232"
+}
+
+variable "machine" {
+  description = "Type of ec2"
+  required = true
+  default = "123"
+}
+
+variable "web_name" {
+  description = "Website name"
+  default = "Domain.com"
+}
+
+variable "place" {
+description = "Where we want to create machines"
+required = true
+default = "eu-west-1"
+}
+
+variable "vpc_cidr_block" {
+  default = "192.168.0.0/16"
+}
+
+variable "public_subnet_cidr_block" {
+  default = "192.168.1.0/24"
+}
+
+variable "private_subnet_cidr_block" {
+  default = "192.168.2.0/24"
+}
+

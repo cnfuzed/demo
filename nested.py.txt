@@ -1,0 +1,15 @@
+def get_nested_value(nested_dict, key_str):
+    keys = key_str.split("/")
+    temp = nested_dict
+    for key in keys:
+        temp = temp.get(key)
+    return temp
+nested_dict = {"a": {"b": {"c": "d"}}}
+key_str = "a/b/c"
+value = get_nested_value(nested_dict, key_str)
+print(value)  # Outputs: d
+
+nested_dict = {"x": {"y": {"z": "a"}}}
+key_str = "x/y/z"
+value = get_nested_value(nested_dict, key_str)
+print(value)

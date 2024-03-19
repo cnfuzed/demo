@@ -1,0 +1,35 @@
+resource "aws_instance" "app_server" {
+  ami           = var.ami_id
+  instance_type = var.machine
+  subnet_id     = aws_subnet.demo_pub_subnet.id
+  security_groups = [aws_security_group.app_server_sg.name]
+
+  root_block_device {
+    volume_size = 30
+    encrypted   = true
+    kms_key_id = "ARN of key"
+  }
+
+  user_data = file("installapp.sh")
+
+  tags = {
+    Name = "AppServer"
+  }
+}
+
+resource "aws_instance" "db_server" {
+  ami           = var.ami_id
+  instance_type = "var.machine"
+  subnet_id     = aws_subnet.demo_pvt_subnet.id
+  security_groups = [aws_security_group.db_server_sg.name]
+
+  root_block_device {
+    volume_size = 30
+    encrypted   = true
+    kms_key_id = "ARN of key"
+  }
+
+  tags = {
+    Name = "DBServer"
+  }
+}

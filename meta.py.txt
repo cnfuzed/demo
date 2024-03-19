@@ -1,0 +1,13 @@
+import boto3
+import json
+
+def get_instance_metadata(instance_id):
+    ec2_client = boto3.client('ec2')
+    response = ec2_client.describe_instances(InstanceIds=[instance_id])
+    instance_metadata = response['Reservations'][0]['Instances'][0]
+    return instance_metadata
+
+
+instance_id = "instance_id" #required input
+instance_metadata = get_instance_metadata(instance_id)
+print(json.dumps(instance_metadata, indent=4))
